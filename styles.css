@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-color: #20232d;
+}
+#inputText {
+  background-color: #160429;
+  width: 90vw;
+  height: 20vh;
+  margin: 0 auto;
+  display: block;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+}
+textarea::placeholder {
+  color: white;
+  font-size: 20px;
+}
+#output {
+  background-color: #160429;
+  padding: 16px;
+  border-radius: 8px;
+  white-space: pre-wrap;
+  font-family: Consolas, monospace;
+  border: 1px solid #ffffff;
+  color: #333;
+}
+.btn-wrapper {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+button {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 20px auto;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.tytul {
+  text-align: center;
+  font-size: 30px;
+  margin: 30px 0;
+}
+.tytul-wyniki {
+  text-align: center;
+  font-size: 30px;
+  margin: 30px 0;
+}
+
+.wynik-linia {
+  margin-bottom: 1em;
+  font-size: 20px;
+  border-bottom: 1px solid #ffffff;
+}
+.wynik-linia strong {
+  margin-bottom: 10px;
+}
+.wynik-linia p {
+  margin-bottom: 10px;
+}
+.wynik-nazwa {
+}
+.wynik-mnozenie {
+  font-size: 26px;
+}
+.poprawne {
+}
+
+.bledne {
+  color: red;
+  font-style: italic;
+}
+
+.podsumowanie {
+  font-weight: bold;
+  font-size: 2em;
+  color: #222;
+  margin-top: 1em;
+  border-top: 1px solid #999;
+  padding-top: 10px;
+}
