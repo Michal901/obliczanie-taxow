@@ -6,10 +6,17 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 body {
-  background-color: #20232d;
+  /* background: #020024;
+  background: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(20, 9, 121, 1) 50%,
+    rgba(0, 212, 255, 1) 100%
+  ); */
+  background-image: linear-gradient(to right, #33001b 30%, #03bec2);
 }
 #inputText {
-  background-color: #160429;
+  background-color: #000000;
   width: 90vw;
   height: 20vh;
   margin: 0 auto;
@@ -23,7 +30,7 @@ textarea::placeholder {
   font-size: 20px;
 }
 #output {
-  background-color: #160429;
+  background-color: #000000;
   padding: 16px;
   border-radius: 8px;
   white-space: pre-wrap;
@@ -37,14 +44,21 @@ textarea::placeholder {
   justify-content: center;
 }
 button {
-  background-color: white;
-  color: black;
+  background-color: #33001b;
+  color: #ffffff;
   padding: 20px;
   border-radius: 20px;
   cursor: pointer;
   margin: 20px auto;
   text-transform: uppercase;
   font-weight: 900;
+  border: 1px solid #33001b;
+  transition: all 0.3s ease-in-out;
+}
+button:hover {
+  background-color: white;
+  color: #33001b;
+  border: 1px solid white;
 }
 .tytul {
   text-align: center;
