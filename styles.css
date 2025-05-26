@@ -104,6 +104,10 @@ button:hover {
   padding-top: 10px;
 }
 @media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
   body * {
     visibility: hidden;
     color: black;

@@ -53,7 +53,7 @@ function obliczWage() {
         <th>#</th>
         <th>Produkt</th>
         <th>Ilość</th>
-        <th>Waga (kg)</th>
+        <th>Waga pojedyncza (kg)</th>
         <th>Waga całkowita (kg)</th>
       </tr>
     </thead>
@@ -63,16 +63,19 @@ function obliczWage() {
     <tfoot>
       <tr>
         <td colspan="4" style="text-align: right;"><strong>Łączna waga:</strong></td>
-        <td><strong>${total.toFixed(2)}</strong></td>
+        <td><strong>${total.toFixed(2)} kg</strong></td>
       </tr>
     </tfoot>
   </table>
 `;
 
   document.getElementById("printTable").innerHTML = tabelaHTML;
-  document.getElementById("printTable").style.display = "block";
+  // document.getElementById("printTable").style.display = "block";
 }
 
 function drukujWyniki() {
-  window.print();
+  const tabela = document.getElementById("printTable");
+  tabela.style.display = "block"; // Pokaż tabelę na chwilę
+  window.print(); // Wywołaj drukowanie
+  tabela.style.display = "none"; // Ukryj znowu po wydruku
 }
