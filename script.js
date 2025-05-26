@@ -31,7 +31,7 @@ function obliczWage() {
         <tr>
           <td> </td>
           <td>${line.trim()}</td>
-          <td>${quantity}</td>
+          <td style="text-align: center;"><strong>${quantity}</strong></td>
           <td>${weight}</td>
           <td>${lineTotal.toFixed(2)}</td>
         </tr>`;
@@ -50,7 +50,7 @@ function obliczWage() {
   <table>
     <thead>
       <tr>
-        <th>#</th>
+        <th style="text-align: center;"><img src="src/check.png" alt="" style="width: 15px;"></th>
         <th>Produkt</th>
         <th>Ilość</th>
         <th>Waga pojedyncza (kg)</th>

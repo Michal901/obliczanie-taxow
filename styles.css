@@ -151,6 +151,8 @@ button:hover {
   body * {
     visibility: hidden;
     color: black;
+    margin: 0;
+    padding: 0;
   }
   #output {
     color: #333;
