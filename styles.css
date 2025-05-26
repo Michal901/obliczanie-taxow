@@ -13,8 +13,30 @@ body {
     rgba(20, 9, 121, 1) 50%,
     rgba(0, 212, 255, 1) 100%
   ); */
-  background-image: linear-gradient(to right, #33001b 30%, #03bec2);
+  /* background-image: linear-gradient(to right, #33001b 30%, #03bec2); */
+
+  background: linear-gradient(
+    -45deg,
+    rgba(51, 0, 27, 1) 38%,
+    rgba(3, 190, 194, 1) 66%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
 }
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 #inputText {
   background-color: #000000;
   width: 90vw;
@@ -45,6 +67,9 @@ textarea::placeholder {
   gap: 60px;
 }
 button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
   background-color: #33001b;
   color: #ffffff;
   padding: 20px;
