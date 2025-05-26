@@ -3,6 +3,7 @@ function obliczWage() {
   const lines = text.split("\n");
   let total = 0;
   let output = "";
+  let tableRows = "";
 
   for (const line of lines) {
     if (!line.trim()) continue;
@@ -22,9 +23,18 @@ function obliczWage() {
       } else {
         const lineTotal = weight * quantity;
         total += lineTotal;
-        output += `<div class="wynik-linia poprawne"><p class="wynik-nazwa">${line.trim()}</p><p class="wynik-mnozenie">➡️ ${weight} kg × ${quantity} = <strong>${lineTotal.toFixed(
+        output += `<div class="wynik-linia poprawne"><p class="wynik-nazwa">${line.trim()}</p><p class="wynik-mnozenie">➡️ ${quantity} × ${weight} kg = <strong>${lineTotal.toFixed(
           2
         )} kg</strong></p></div>`;
+
+        tableRows += `
+        <tr>
+          <td> </td>
+          <td>${line.trim()}</td>
+          <td>${quantity}</td>
+          <td>${weight}</td>
+          <td>${lineTotal.toFixed(2)}</td>
+        </tr>`;
       }
     } else {
       output += `<div class="wynik-linia bledne">${line.trim()} ❌ Błąd: nie rozpoznano wagi lub ilości</div>`;
@@ -35,4 +45,34 @@ function obliczWage() {
     2
   )} kg</strong></div>`;
   document.getElementById("output").innerHTML = output;
+
+  const tabelaHTML = `
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Produkt</th>
+        <th>Ilość</th>
+        <th>Waga (kg)</th>
+        <th>Waga całkowita (kg)</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${tableRows}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" style="text-align: right;"><strong>Łączna waga:</strong></td>
+        <td><strong>${total.toFixed(2)}</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+`;
+
+  document.getElementById("printTable").innerHTML = tabelaHTML;
+  document.getElementById("printTable").style.display = "block";
+}
+
+function drukujWyniki() {
+  window.print();
 }

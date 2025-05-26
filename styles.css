@@ -103,3 +103,41 @@ button:hover {
   border-top: 1px solid #999;
   padding-top: 10px;
 }
+@media print {
+  body * {
+    visibility: hidden;
+    color: black;
+  }
+  #output {
+    color: #333;
+  }
+  #printTable,
+  #printTable * {
+    visibility: visible;
+  }
+  #printTable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+  }
+
+  #printTable table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+  }
+  #printTable th,
+  #printTable td {
+    border: 1px solid #000;
+    padding: 6px 10px;
+    text-align: left;
+  }
+  #printTable th {
+    background-color: #eee;
+  }
+  input[type="checkbox"] {
+    transform: scale(1.2);
+  }
+}

@@ -12,11 +12,15 @@
 <body>
     <h2 class="tytul">Wklej dane z arkusza:</h2>
     <textarea id="inputText" placeholder="Wklej dane z arkusza"></textarea><br>
-    <div class="btn-wrapper"><button onclick="obliczWage()">Oblicz wagę</button>
+    <div class="btn-wrapper">
+        <button onclick="obliczWage()">Oblicz wagę</button>
+        <button onclick="drukujWyniki()">🖨️ Drukuj wyniki</button>
+
     </div>
 
     <h3 class="tytul-wyniki">Wynik:</h3>
     <pre id="output"></pre>
+    <div id="printTable" style="display: none;"></div>
 
     <script></script>
 </body>
