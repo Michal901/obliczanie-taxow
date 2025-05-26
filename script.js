@@ -23,7 +23,7 @@ function obliczWage() {
       } else {
         const lineTotal = weight * quantity;
         total += lineTotal;
-        output += `<div class="wynik-linia poprawne"><p class="wynik-nazwa">${line.trim()}</p><p class="wynik-mnozenie">➡️ ${quantity} × ${weight} kg = <strong>${lineTotal.toFixed(
+        output += `<div class="wynik-linia poprawne"><p class="wynik-nazwa">${line.trim()}</p><p class="wynik-mnozenie"><img src="src/arrow-right.png" alt="" style="width: 30px;"> ${quantity} × ${weight} kg = <strong>${lineTotal.toFixed(
           2
         )} kg</strong></p></div>`;
 
@@ -41,7 +41,7 @@ function obliczWage() {
     }
   }
 
-  output += `<div class="podsumowanie">👉 <strong>Łączna waga: ${total.toFixed(
+  output += `<div class="podsumowanie"><img src="src/right.png" alt="" style="width: 40px;"> <strong>Łączna waga: ${total.toFixed(
     2
   )} kg</strong></div>`;
   document.getElementById("output").innerHTML = output;

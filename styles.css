@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 body {
   /* background: #020024;
@@ -67,10 +67,16 @@ textarea::placeholder {
   gap: 60px;
 }
 button {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1px;
   display: flex;
   gap: 10px;
   align-items: center;
-  background-color: #33001b;
+  background: linear-gradient(
+    -45deg,
+    rgba(3, 190, 194, 1) 0%,
+    rgba(51, 0, 27, 1) 50%
+  );
   color: #ffffff;
   padding: 20px;
   border-radius: 20px;
@@ -81,7 +87,11 @@ button {
   transition: all 0.3s ease-in-out;
 }
 button:hover {
-  background-color: white;
+  background: linear-gradient(
+    -45deg,
+    rgb(255, 255, 255) 20%,
+    rgb(255, 255, 255) 50%
+  );
   color: #33001b;
   border: 1px solid white;
 }
@@ -111,6 +121,9 @@ button:hover {
 }
 .wynik-mnozenie {
   font-size: 26px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
 }
 .poprawne {
 }
@@ -127,6 +140,8 @@ button:hover {
   margin-top: 1em;
   border-top: 1px solid #999;
   padding-top: 10px;
+  display: flex;
+  gap: 20px;
 }
 @media print {
   body {
