@@ -186,4 +186,7 @@ button:hover {
   input[type="checkbox"] {
     transform: scale(1.2);
   }
+  .lp {
+    text-align: center;
+  }
 }

@@ -4,6 +4,7 @@ function obliczWage() {
   let total = 0;
   let output = "";
   let tableRows = "";
+  let i = 1;
 
   for (const line of lines) {
     if (!line.trim()) continue;
@@ -30,6 +31,7 @@ function obliczWage() {
         tableRows += `
         <tr>
           <td> </td>
+          <td>${i++}.</td>
           <td>${line.trim()}</td>
           <td style="text-align: center;"><strong>${quantity}</strong></td>
           <td>${weight}</td>
@@ -51,6 +53,7 @@ function obliczWage() {
     <thead>
       <tr>
         <th style="text-align: center;"><img src="src/check.png" alt="" style="width: 15px;"></th>
+        <th>l.p.</th>
         <th>Produkt</th>
         <th>Ilość</th>
         <th>Waga pojedyncza (kg)</th>
@@ -62,7 +65,7 @@ function obliczWage() {
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="4" style="text-align: right;"><strong>Łączna waga:</strong></td>
+        <td colspan="5" style="text-align: right;"><strong>Łączna waga:</strong></td>
         <td><strong>${total.toFixed(2)} kg</strong></td>
       </tr>
     </tfoot>
