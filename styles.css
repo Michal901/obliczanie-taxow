@@ -62,11 +62,18 @@ textarea::placeholder {
 }
 .btn-wrapper {
   width: 100vw;
-  display: flex;
+  gap: 60px 15px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
   justify-content: center;
-  gap: 60px;
+  align-items: center;
+  align-content: space-evenly;
+  width: max-content;
 }
 button {
+  width: fit-content;
   font-family: "Montserrat", sans-serif;
   letter-spacing: 1px;
   display: flex;
