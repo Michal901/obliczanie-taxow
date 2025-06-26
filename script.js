@@ -3,10 +3,14 @@ let historiaProduktow = [];
 function obliczWage() {
   const text = document.getElementById("inputText").value;
   const lines = text.split("\n");
+
   let total = 0;
   let output = "";
   let tableRows = "";
   let i = 1;
+
+  let tymczasowaHistoria = [];
+  let czySaBledy = false;
 
   for (const line of lines) {
     if (!line.trim()) continue;
@@ -21,8 +25,10 @@ function obliczWage() {
 
       if (weight <= 0) {
         output += `<div class="wynik-linia bledne">${line.trim()} ❌ Błąd: waga ≤ 0 (błędna wartość)</div>`;
+        czySaBledy = true;
       } else if (quantity <= 0) {
         output += `<div class="wynik-linia bledne">${line.trim()} ❌ Błąd: ilość ≤ 0 (błędna wartość)</div>`;
+        czySaBledy = true;
       } else {
         const lineTotal = weight * quantity;
         total += lineTotal;
@@ -32,7 +38,7 @@ function obliczWage() {
           .replace(/(\d+[.,]?\d*)\s*$/, "")
           .trim();
 
-        historiaProduktow.push({
+        tymczasowaHistoria.push({
           nazwa: nazwaProduktu,
           ilosc: quantity,
           waga: weight,
@@ -54,8 +60,17 @@ function obliczWage() {
       }
     } else {
       output += `<div class="wynik-linia bledne">${line.trim()} ❌ Błąd: nie rozpoznano wagi lub ilości</div>`;
+      czySaBledy = true;
     }
   }
+
+  if (czySaBledy) {
+    output += `<div class="podsumowanie"><img src="src/warning.png" alt="" style="width: 40px;"> <strong>Nie dodano produktów – popraw błędy powyżej.</strong></div>`;
+    document.getElementById("output").innerHTML = output;
+    return;
+  }
+
+  historiaProduktow.push(...tymczasowaHistoria);
 
   output += `<div class="podsumowanie"><img src="src/right.png" alt="" style="width: 40px;"> <strong>Łączna waga: ${total.toFixed(
     2
@@ -106,6 +121,11 @@ function sumujProdukty() {
     produkty[key].quantity += item.ilosc;
   }
 
+  // Sortowanie po wadze całkowitej malejąco
+  const produktyPosortowane = Object.values(produkty).sort(
+    (a, b) => b.weight * b.quantity - a.weight * a.quantity
+  );
+
   let zbiorczaTabela = `
     <h3 class="tytul-wyniki">Zbiorcze podsumowanie produktów:</h3>
     <table>
@@ -123,8 +143,9 @@ function sumujProdukty() {
 
   let index = 1;
   let total = 0;
-  for (const key in produkty) {
-    const item = produkty[key];
+
+  // ⬇️ Użyj posortowanej listy!
+  for (const item of produktyPosortowane) {
     const lineTotal = item.weight * item.quantity;
     total += lineTotal;
 
@@ -133,21 +154,11 @@ function sumujProdukty() {
         <td></td>
         <td>${index++}</td>
         <td>${item.name}</td>
-        <td>${item.quantity}</td>
+        <td><strong>${item.quantity}</strong></td>
         <td>${item.weight}</td>
         <td><strong>${lineTotal.toFixed(2)}</strong></td>
       </tr>`;
   }
-
-  zbiorczaTabela += `
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="5" style="text-align: right;"><strong>Łączna waga:</strong></td>
-          <td><strong>${total.toFixed(2)} kg</strong></td>
-        </tr>
-      </tfoot>
-    </table>`;
 
   document.getElementById("output").innerHTML = zbiorczaTabela;
   document.getElementById("printTable").innerHTML = zbiorczaTabela;
