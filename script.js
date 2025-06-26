@@ -1,3 +1,5 @@
+let historiaProduktow = [];
+
 function obliczWage() {
   const text = document.getElementById("inputText").value;
   const lines = text.split("\n");
@@ -24,6 +26,18 @@ function obliczWage() {
       } else {
         const lineTotal = weight * quantity;
         total += lineTotal;
+
+        const nazwaProduktu = line
+          .replace(/(\d+[.,]?\d*\s*kg)/gi, "")
+          .replace(/(\d+[.,]?\d*)\s*$/, "")
+          .trim();
+
+        historiaProduktow.push({
+          nazwa: nazwaProduktu,
+          ilosc: quantity,
+          waga: weight,
+        });
+
         output += `<div class="wynik-linia poprawne"><p class="wynik-nazwa">${line.trim()}</p><p class="wynik-mnozenie"><img src="src/arrow-right.png" alt="" style="width: 30px;"> ${quantity} × ${weight} kg = <strong>${lineTotal.toFixed(
           2
         )} kg</strong></p></div>`;
@@ -75,10 +89,84 @@ function obliczWage() {
   document.getElementById("printTable").innerHTML = tabelaHTML;
   // document.getElementById("printTable").style.display = "block";
 }
+function sumujProdukty() {
+  const produkty = {};
 
+  for (const item of historiaProduktow) {
+    const key = item.nazwa.toLowerCase();
+
+    if (!produkty[key]) {
+      produkty[key] = {
+        name: item.nazwa,
+        quantity: 0,
+        weight: item.waga,
+      };
+    }
+
+    produkty[key].quantity += item.ilosc;
+  }
+
+  let zbiorczaTabela = `
+    <h3 class="tytul-wyniki">Zbiorcze podsumowanie produktów:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center;"><img src="src/check.png" alt="" style="width: 15px;"></th>
+          <th>L.p.</th>
+          <th>Nazwa produktu</th>
+          <th>Ilość</th>
+          <th>Waga jednostkowa (kg)</th>
+          <th>Waga łączna (kg)</th>
+        </tr>
+      </thead>
+      <tbody>`;
+
+  let index = 1;
+  let total = 0;
+  for (const key in produkty) {
+    const item = produkty[key];
+    const lineTotal = item.weight * item.quantity;
+    total += lineTotal;
+
+    zbiorczaTabela += `
+      <tr>
+        <td></td>
+        <td>${index++}</td>
+        <td>${item.name}</td>
+        <td>${item.quantity}</td>
+        <td>${item.weight}</td>
+        <td><strong>${lineTotal.toFixed(2)}</strong></td>
+      </tr>`;
+  }
+
+  zbiorczaTabela += `
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5" style="text-align: right;"><strong>Łączna waga:</strong></td>
+          <td><strong>${total.toFixed(2)} kg</strong></td>
+        </tr>
+      </tfoot>
+    </table>`;
+
+  document.getElementById("output").innerHTML = zbiorczaTabela;
+  document.getElementById("printTable").innerHTML = zbiorczaTabela;
+}
+
+function drukujWyniki() {
+  const tabela = document.getElementById("printTable");
+  tabela.style.display = "block";
+  window.print();
+  tabela.style.display = "none";
+}
 function drukujWyniki() {
   const tabela = document.getElementById("printTable");
   tabela.style.display = "block"; // Pokaż tabelę na chwilę
   window.print(); // Wywołaj drukowanie
   tabela.style.display = "none"; // Ukryj znowu po wydruku
+}
+function wyczyscHistorie() {
+  historiaProduktow = [];
+  document.getElementById("output").innerHTML = "<p>Historia wyczyszczona.</p>";
+  document.getElementById("printTable").innerHTML = "";
 }
