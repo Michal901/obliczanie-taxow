@@ -14,6 +14,9 @@ function obliczWage() {
   let tymczasowaHistoria = [];
   let czySaBledy = false;
 
+  document.getElementById("output").style.display = "block";
+  document.getElementsByClassName("tytul-wyniki")[0].style.display = "block";
+
   for (const line of lines) {
     if (!line.trim()) continue;
 
@@ -131,7 +134,7 @@ function sumujProdukty() {
   );
 
   let zbiorczaTabela = `
-    <h3 class="tytul-wyniki">Zbiorcze podsumowanie produktów:</h3>
+    <h3 class="tytul-wyniki-zbiorcze">Zbiorcze podsumowanie produktów:</h3>
     <table>
       <thead>
         <tr>

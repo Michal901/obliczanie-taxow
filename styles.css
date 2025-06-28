@@ -59,6 +59,7 @@ textarea::placeholder {
   font-family: Consolas, monospace;
   border: 1px solid #ffffff;
   color: #333;
+  display: none;
 }
 .btn-wrapper {
   width: 100vw;
@@ -112,6 +113,7 @@ button:hover {
   text-align: center;
   font-size: 30px;
   margin: 30px 0;
+  display: none;
 }
 
 .wynik-linia {
