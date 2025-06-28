@@ -177,10 +177,8 @@ function drukujWyniki() {
   tabela.style.display = "none"; // Ukryj znowu po wydruku
 }
 function wyczyscHistorie() {
-  const textArea = document.getElementById("inputText").value;
-
   historiaProduktow = [];
   document.getElementById("output").innerHTML = "<p>Historia wyczyszczona.</p>";
   document.getElementById("printTable").innerHTML = "";
-  textArea = "";
+  document.getElementById("inputText").value = ""; // ← tutaj bez błędu
 }
