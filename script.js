@@ -1,4 +1,5 @@
 let historiaProduktow = [];
+let arkuszIndex = 1;
 
 function obliczWage() {
   const text = document.getElementById("inputText").value;
@@ -165,20 +166,29 @@ function sumujProdukty() {
 }
 
 function drukujWyniki() {
+  if (
+    document.getElementById("inputText").value === "" ||
+    document.getElementById("output").innerHTML === ""
+  )
+    return;
+
   const tabela = document.getElementById("printTable");
   tabela.style.display = "block";
+
+  const naglowek = document.createElement("h2");
+  naglowek.className = "tytul-arkusza";
+  naglowek.textContent = `${arkuszIndex++}`;
+
+  tabela.insertBefore(naglowek, tabela.firstChild);
+
   window.print();
   tabela.style.display = "none";
 }
-function drukujWyniki() {
-  const tabela = document.getElementById("printTable");
-  tabela.style.display = "block"; // Pokaż tabelę na chwilę
-  window.print(); // Wywołaj drukowanie
-  tabela.style.display = "none"; // Ukryj znowu po wydruku
-}
+
 function wyczyscHistorie() {
   historiaProduktow = [];
   document.getElementById("output").innerHTML = "<p>Historia wyczyszczona.</p>";
   document.getElementById("printTable").innerHTML = "";
-  document.getElementById("inputText").value = ""; // ← tutaj bez błędu
+  document.getElementById("inputText").value = "";
+  arkuszIndex = 1;
 }
