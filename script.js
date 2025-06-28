@@ -1,5 +1,6 @@
 let historiaProduktow = [];
 let arkuszIndex = 1;
+let trybSumowania = false;
 
 function obliczWage() {
   const text = document.getElementById("inputText").value;
@@ -106,6 +107,8 @@ function obliczWage() {
   // document.getElementById("printTable").style.display = "block";
 }
 function sumujProdukty() {
+  trybSumowania = true;
+
   const produkty = {};
 
   for (const item of historiaProduktow) {
@@ -166,20 +169,23 @@ function sumujProdukty() {
 }
 
 function drukujWyniki() {
+  const tabela = document.getElementById("printTable");
+
   if (
     document.getElementById("inputText").value === "" ||
     document.getElementById("output").innerHTML === ""
   )
     return;
 
-  const tabela = document.getElementById("printTable");
   tabela.style.display = "block";
 
-  const naglowek = document.createElement("h2");
-  naglowek.className = "tytul-arkusza";
-  naglowek.textContent = `${arkuszIndex++}`;
+  if (!trybSumowania) {
+    const naglowek = document.createElement("h2");
+    naglowek.className = "tytul-arkusza";
+    naglowek.textContent = `${arkuszIndex++}`;
 
-  tabela.insertBefore(naglowek, tabela.firstChild);
+    tabela.insertBefore(naglowek, tabela.firstChild);
+  }
 
   window.print();
   tabela.style.display = "none";
@@ -187,6 +193,7 @@ function drukujWyniki() {
 
 function wyczyscHistorie() {
   historiaProduktow = [];
+  trybSumowania = false;
   document.getElementById("output").innerHTML = "<p>Historia wyczyszczona.</p>";
   document.getElementById("printTable").innerHTML = "";
   document.getElementById("inputText").value = "";
