@@ -138,8 +138,8 @@ function sumujProdukty() {
     <table class="wyniki-zbiorcze">
       <thead>
         <tr>
-          <th style="text-align: center;"><img src="src/check.png" alt="" style="width: 15px;"></th>
-          <th style="padding:0 !important;">L.p.</th>
+          <th style="text-align: center; padding:0 10px !important;"><img src="src/check.png" alt="" style="width: 15px;"></th>
+          <th style="padding:0 10px !important;">L.p.</th>
           <th>Nazwa produktu</th>
           <th>Ilość</th>
           <th>Waga jednostkowa (kg)</th>
