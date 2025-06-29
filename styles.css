@@ -153,6 +153,15 @@ button:hover {
   display: flex;
   gap: 20px;
 }
+.wyniki-zbiorcze {
+  font-size: 18px;
+}
+.wyniki-zbiorcze td {
+  padding: 2px 30px 2px 0;
+}
+.wyniki-zbiorcze th {
+  padding: 10px 30px 10px 0;
+}
 @media print {
   body {
     margin: 0;

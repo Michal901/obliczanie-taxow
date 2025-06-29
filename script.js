@@ -135,11 +135,11 @@ function sumujProdukty() {
 
   let zbiorczaTabela = `
     <h3 class="tytul-wyniki-zbiorcze">Zbiorcze podsumowanie produktów:</h3>
-    <table>
+    <table class="wyniki-zbiorcze">
       <thead>
         <tr>
           <th style="text-align: center;"><img src="src/check.png" alt="" style="width: 15px;"></th>
-          <th>L.p.</th>
+          <th style="padding:0 !important;">L.p.</th>
           <th>Nazwa produktu</th>
           <th>Ilość</th>
           <th>Waga jednostkowa (kg)</th>
@@ -159,7 +159,7 @@ function sumujProdukty() {
     zbiorczaTabela += `
       <tr>
         <td></td>
-        <td>${index++}</td>
+        <td style="padding:0 !important; text-align: center;">${index++}.</td>
         <td>${item.name}</td>
         <td><strong>${item.quantity}</strong></td>
         <td>${item.weight}</td>
