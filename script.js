@@ -5,7 +5,7 @@ let trybSumowania = false;
 function obliczWage() {
   const text = document.getElementById("inputText").value;
   const lines = text.split("\n");
-
+  const button = document.getElementById("obliczBtn");
   let total = 0;
   let output = "";
   let tableRows = "";
@@ -70,8 +70,13 @@ function obliczWage() {
   }
 
   if (czySaBledy) {
-    output += `<div class="podsumowanie"><img src="src/warning.png" alt="" style="width: 40px;"> <strong>Nie dodano produktów – popraw błędy powyżej.</strong></div>`;
+    output += `<div id="popupError" class="popup-error">Nie dodano produktów – popraw błędy poniżej.</div>`;
     document.getElementById("output").innerHTML = output;
+    setTimeout(() => {
+      const popup = document.getElementById("popupError");
+      if (popup) popup.remove();
+    }, 3000);
+
     return;
   }
 

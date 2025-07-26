@@ -163,6 +163,36 @@ button:hover {
 .wyniki-zbiorcze th {
   padding: 10px 30px 10px 0;
 }
+.popup-error {
+  display: block;
+  position: fixed;
+  top: 200px;
+  left: 50%;
+  width: 60%;
+  transform: translateX(-50%);
+  background-color: #ff4d4f;
+  color: #fff;
+  text-align: center;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-size: 32px;
+  font-weight: bold;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 @media print {
   body {
     margin: 0;
