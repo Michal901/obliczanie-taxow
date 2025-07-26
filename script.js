@@ -5,7 +5,7 @@ let trybSumowania = false;
 function obliczWage() {
   const text = document.getElementById("inputText").value;
   const lines = text.split("\n");
-  const button = document.getElementById("obliczBtn");
+  const button = document.getElementsByClassName("btn-waga")[0];
   let total = 0;
   let output = "";
   let tableRows = "";
@@ -16,6 +16,8 @@ function obliczWage() {
 
   document.getElementById("output").style.display = "block";
   document.getElementsByClassName("tytul-wyniki")[0].style.display = "block";
+
+  if (button) button.disabled = true;
 
   for (const line of lines) {
     if (!line.trim()) continue;
@@ -72,6 +74,7 @@ function obliczWage() {
   if (czySaBledy) {
     output += `<div id="popupError" class="popup-error">Nie dodano produktów – popraw błędy poniżej.</div>`;
     document.getElementById("output").innerHTML = output;
+
     setTimeout(() => {
       const popup = document.getElementById("popupError");
       if (popup) popup.remove();
@@ -114,6 +117,10 @@ function obliczWage() {
   document.getElementById("printTable").innerHTML = tabelaHTML;
   // document.getElementById("printTable").style.display = "block";
 }
+document.getElementById("inputText").addEventListener("input", () => {
+  const button = document.getElementsByClassName("btn-waga")[0];
+  if (button) button.disabled = false;
+});
 function sumujProdukty() {
   trybSumowania = true;
 
