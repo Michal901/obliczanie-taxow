@@ -132,8 +132,7 @@ button:hover {
 .wynik-mnozenie {
   font-size: 26px;
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  align-items: flex-end;
 }
 .poprawne {
 }

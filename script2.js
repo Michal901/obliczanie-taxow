@@ -52,12 +52,11 @@ function obliczWage() {
         total += lineTotal;
 
         output += `<div class="wynik-linia poprawne">
-  <p class="wynik-nazwa">${line.trim()}</p>
-  <p class="wynik-mnozenie">
-    <img src="src/arrow-right.png" alt="" style="width: 30px;">
-    ${quantity} × 1 = ${quantity} × ${weight} kg = <strong>${lineTotal.toFixed(2)} kg</strong>
-  </p>
-</div>`;
+          <p class="wynik-nazwa">${line.trim()}</p>
+          <p class="wynik-mnozenie">
+            ${quantity} × 1 = ${quantity} × ${weight} kg = <strong>${lineTotal.toFixed(2)} kg</strong>
+          </p>
+        </div>`;
 
         tableRows += `
           <tr>

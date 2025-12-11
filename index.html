@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     <meta charset="UTF-8">
     <title>Kalkulator Tax</title>
     <link rel="icon" href="src/scale.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
     <script src="script.js" defer></script>
-
 </head>
 
 <body>
     <h2 class="tytul">Wklej dane z arkusza:</h2>
+
     <textarea id="inputText" placeholder="Wklej dane z arkusza"></textarea><br>
+
+    <!-- NOWE POLE MULTIPLIERA -->
+    <div style="margin:20px 0; text-align:center;">
+        <label for="multiplier" style="font-size:20px; margin-right:10px;">
+            Powiel normę:
+        </label>
+        <input id="multiplier" type="number" min="1" value="1"
+               style="width:80px; padding:8px; border-radius:6px; border:1px solid #fff;
+                      background:#00000060; color:white; font-size:18px;">
+    </div>
+
     <div class="btn-wrapper">
+        <button class="btn-waga" onclick="obliczWage()">
+            <img src="src/scale.png" style="width:20px;"> Oblicz wagę
+        </button>
 
+        <button class="btn-druk" onclick="drukujWyniki()">
+            <img src="src/printer2.png" style="width:20px;"> Drukuj wyniki
+        </button>
 
+        <button onclick="sumujProdukty()">
+            <img src="src/plus (1).png" style="width:20px;"> Sumuj produkty
+        </button>
 
-        <button class="btn-waga" onclick="obliczWage()"><img src="src/scale.png" alt="" style="width: 20px;"> Oblicz
-            wagę</button>
-
-        <button class="btn-druk" onclick="drukujWyniki()"><img src="src/printer2.png" alt="" style="width: 20px;">
-            Drukuj wyniki</button>
-
-        <button onclick="sumujProdukty()"><img src="src/plus (1).png" alt="" style="width: 20px;">Sumuj
-            produkty</button>
-
-        <button onclick="wyczyscHistorie()"><img src="src/recyclebin.png" alt="" style="width: 20px;"> Wyczyść
-            historię</button>
+        <button onclick="wyczyscHistorie()">
+            <img src="src/recyclebin.png" style="width:20px;"> Wyczyść historię
+        </button>
     </div>
 
     <h3 class="tytul-wyniki">Wynik:</h3>
     <pre id="output"></pre>
-    <div id="printTable" style="display: none;"></div>
 
-    <script></script>
+    <div id="printTable" style="display:none;"></div>
 </body>
-
 </html>
