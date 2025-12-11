@@ -121,9 +121,9 @@ button:hover {
   font-size: 20px;
   border-bottom: 1px solid #ffffff;
 }
-.wynik-linia strong {
+/* .wynik-linia strong {
   margin-bottom: 10px;
-}
+} */
 .wynik-linia p {
   margin-bottom: 10px;
 }
