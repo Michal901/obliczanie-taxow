@@ -169,10 +169,7 @@ function sumujProdukty() {
   zbiorczaTabela += `
       </tbody>
       <tfoot>
-        <tr>
-          <td colspan="5" style="text-align:right;"><strong>Łączna waga:</strong></td>
-          <td><strong>${total.toFixed(2)} kg</strong></td>
-        </tr>
+       
       </tfoot>
     </table>`;
 
